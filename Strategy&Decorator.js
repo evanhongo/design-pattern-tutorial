@@ -15,13 +15,27 @@ const handleRequest = {
 //////////////////////
 // Strategy Pattern //
 //////////////////////
+class Sword {
+  constructor() {
+    this.atk = 10;
+    this.range = 1;
+  }
+}
 
 class Adventurer {
-  constructor() {
+  constructor(atk, def) {
     this.hp = 100;
-    this.atk = 60;
-    this.def = 60;
+    this.atk = atk;
+    this.def = def;
     this.state = new NormalState(this);
+  }
+
+  setWeapon(weapon) {
+    this.weapon = weapon;
+  }
+
+  setClothes(clothes) {
+    this.clothes = clothes;
   }
 
   chooseAttackStrategy(strategy) {
@@ -53,6 +67,38 @@ class Adventurer {
   }
 }
 
+class Swordman extends Adventurer {
+  constructor(atk, def) {
+    this.hp = 100;
+    this.atk = atk;
+    this.def = def;
+    this.state = new NormalState(this);
+  }
+}
+
+class SwordmanEquipmentFactory {
+  createWeapon() {
+    const sword = new Sword();
+    return sword;
+  }
+
+  createClothes() {
+    const armor = new armor();
+    return armor;
+  }
+}
+
+class SwordmanFactory {
+  equipmentFactory = new SwordmanEquipmentFactory();
+
+  createAdventurer() {
+    const swordman = new Swordman();
+    swordman.setWeapon(equipmentFactory.createWeapon());
+    swordman.setClothes(equipmentFactory.createClothes());
+    return swordman;
+  }
+}
+
 class NormalAttack {
   execute(adventurer) {
     console.log(`使用一般攻擊造成${adventurer.atk}傷害`);
@@ -60,6 +106,10 @@ class NormalAttack {
 }
 
 class Skill {
+  constructor() {
+    this.level = 1;
+  }
+
   execute(adventurer) {
     console.log(`使用技能造成${adventurer.atk * 5}傷害`);
   }
@@ -118,7 +168,8 @@ const withPoisoned = async (adventurer) => {
 };
 
 const demo = async () => {
-  const ad = new Adventurer();
+  const factory = new SwordmanFactory();
+  const ad = factory.createAdventurer();
 
   // ad.chooseAttackStrategy(new Skill()).attack();
   // ad.chooseAttackStrategy(new NormalAttack()).attack();

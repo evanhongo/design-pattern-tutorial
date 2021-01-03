@@ -4,9 +4,49 @@
 
 ### 1. Factory
 
+#### Creator
+
+- The 'factory' object that creates new products
+- Implements 'factoryMethod' which returns newly created products
+
+#### AbstractProduct
+
+- Declares an interface for products
+
+#### ConcreteProduct
+
+- The product being created
+- All products support the same interface (properties and methods)
+
+---
+
 ### 2. Abstract Factory
 
+#### AbstractFactory
+
+- Declares an interface for creating products
+
+#### ConcreteFactory
+
+- A factory object that 'manufactures' new products
+- The create() method returns new products
+
+#### Products
+
+- The product instances being created by the Tfactory
+
+#### AbstractProduct
+
+- Declares an interface for the products that are being created
+
+---
+
 ### 3. Singleton
+
+#### Singleton
+
+- Defines getInstance() which returns the unique instance.
+- Responsible for creating and managing the instance object.
 
 ---
 
