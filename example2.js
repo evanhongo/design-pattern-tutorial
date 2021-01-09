@@ -1,7 +1,9 @@
 // 假設有某電商，現在提供先訂購500元就送優惠卷100元、訂購200元就送優惠卷50元
 // 的活動，若沒有提前訂購就必須在倉庫有貨的狀況下才能買到:
 
-//責任鏈模式 Chain of Responsibility
+/////////////////////////////
+// Chain of Responsibility //
+/////////////////////////////
 class Node {
   constructor(fn) {
     this.task = fn;

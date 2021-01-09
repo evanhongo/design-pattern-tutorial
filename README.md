@@ -45,8 +45,24 @@
 
 #### Singleton
 
-- Defines getInstance() which returns the unique instance.
-- Responsible for creating and managing the instance object.
+- Defines getInstance() which returns the unique instance
+- Responsible for creating and managing the instance object
+
+---
+
+### 4. Prototype
+
+#### Client
+
+- Creates a new object by asking a prototype to clone itself
+
+#### Prototype
+
+- Creates an interfaces to clone itself
+
+#### Clones
+
+- The cloned objects that are being created
 
 ---
 
@@ -84,6 +100,43 @@
 - **Wraps around** component by maintaining a reference to it
   defines an interface that conforms to component's interface
   implements the additional functionality
+
+---
+
+### 3. Bridge
+
+#### Client
+
+- Calls into abstraction to request an operation
+
+#### Abstraction
+
+- Declares an interface for first level abstraction
+- Maintains a reference to the Implementor
+
+#### RefinedAbstraction
+
+- Implements and extends the interface defined by Abstraction
+
+#### Implementor
+
+- Declares an interface for second level or implementor abstraction
+
+#### ConcreteImplementor
+
+- Implements the Implementor interface and defines its effects
+
+### 4. Facade
+
+#### Facade
+
+- Knows which subsystems are responsible for a request
+- Delegates client requests to appropriate subsystem objects
+
+#### Sub Systems
+
+- Implements and performs specialized subsystem functionality
+- Have no knowledge of or reference to the facade
 
 ---
 

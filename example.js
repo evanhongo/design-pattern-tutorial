@@ -69,10 +69,16 @@ class Adventurer {
 
 class Swordman extends Adventurer {
   constructor(atk, def) {
-    this.hp = 100;
-    this.atk = atk;
-    this.def = def;
-    this.state = new NormalState(this);
+    super(atk, def);
+  }
+
+  clone() {
+    const swordman = new Swordman();
+    swordman.hp = this.hp;
+    swordman.atk = this.atk;
+    swordman.def = this.def;
+    swordman.state = this.state;
+    return swordman;
   }
 }
 
@@ -188,6 +194,12 @@ const demo = async () => {
   await sleep(5000);
   ad.useItem(new Antidote());
   console.log(`剩餘HP:${ad.hp}`);
+
+  ///////////////////////
+  // Prototype Pattern //
+  ///////////////////////
+  const ad2 = ad.clone();
+  ad2.attack();
 };
 
 demo();
